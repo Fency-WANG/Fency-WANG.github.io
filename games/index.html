@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签, Fencyの小窝">
+    <meta name="keywords" content="GAME, Fencyの小窝">
     <meta name="description" content="Fencyの小窝">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签 | Fencyの小窝</title>
+    <title>GAME | Fencyの小窝</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -380,7 +380,36 @@
 </header>
 
     
-    <div class="bg-cover pd-header about-cover">
+    <style type="text/css">
+    .about-cover{height:75vh}
+    .game-container{padding:20px}
+    .game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .game-controls{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{margin-right:6px}
+    .tabs .tab a{color:#42b983}
+    .tabs .indicator{background-color:#42b983}
+    .card-title{font-weight:600}
+    .ms-grid{display:grid;gap:2px;user-select:none}
+    .ms-cell{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:#e9edf3;border:1px solid #d0d7de;cursor:pointer;font-weight:700;transition:background .15s, box-shadow .15s}
+    .ms-cell.revealed{background:#fff;border-color:#ddd}
+    .ms-cell.bomb{background:#ffebee;color:#d32f2f}
+    .ms-cell.flag{background:#fff3e0;color:#ef6c00}
+    .ms-cell:hover{background:#f3f6fb;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+    .ms-panel{display:flex;align-items:center;gap:16px}
+    .ms-panel .stat{display:flex;align-items:center;gap:6px}
+    .snake-wrapper{display:flex;flex-direction:column;gap:12px}
+    #snake-canvas{width:100%;max-width:520px;background:linear-gradient(180deg,#0a0a0a,#111);border:6px solid #222;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+    .snake-panel{display:flex;align-items:center;gap:16px}
+    .snake-score{font-weight:700}
+    .btn-small{line-height:30px;height:30px}
+    .win-overlay{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:999}
+    .confetti{position:absolute;width:8px;height:14px;opacity:.9;border-radius:2px;animation:fly 900ms ease-out forwards}
+    @keyframes fly{0%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(var(--dx),var(--dy),0) rotate(var(--rot));opacity:0}}
+    .pulse{animation:pulse .35s ease-out 1; background:#e4faf0; outline:2px solid #42b983}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(66,185,131,.6)}100%{box-shadow:0 0 0 6px rgba(66,185,131,0)}}
+</style>
+
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -436,67 +465,295 @@
 </div>
 
 <main class="content">
+    <div class="container game-container">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">GAME</span>
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s6"><a class="active" href="#minesweeper">扫雷</a></li>
+                            <li class="tab col s6"><a href="#snake">贪吃蛇</a></li>
+                        </ul>
+                    </div>
+                    <div id="minesweeper" class="col s12" style="margin-top:20px">
+                        <div class="game-header">
+                            <div class="ms-panel">
+                                <div class="stat"><i class="fas fa-stopwatch"></i><span id="ms-timer">0s</span></div>
+                                <div class="stat"><i class="fas fa-flag"></i><span id="ms-flags">0</span></div>
+                            </div>
+                            <div class="game-controls">
+                                <div class="input-field" style="margin:0;width:140px">
+                                    <select id="ms-size">
+                                        <option value="9x9" selected>9x9</option>
+                                        <option value="16x16">16x16</option>
+                                        <option value="24x24">24x24</option>
+                                    </select>
+                                    <label>棋盘大小</label>
+                                </div>
+                                <div class="input-field" style="margin:0;width:140px">
+                                    <select id="ms-density">
+                                        <option value="easy" selected>简单</option>
+                                        <option value="normal">普通</option>
+                                        <option value="hard">困难</option>
+                                    </select>
+                                    <label>难度</label>
+                                </div>
+                                <a id="ms-reset" class="waves-effect waves-light btn bg-color">重开</a>
+                            </div>
+                        </div>
+                        <div id="ms-grid" class="ms-grid"></div>
+                    </div>
 
-    
-
-<div id="tags" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/%E5%BF%83%E5%BE%97/" title="心得: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="心得" style="background-color: #F9EBEA;">心得
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="博客" style="background-color: #F5EEF8;">博客
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
+                    <div id="snake" class="col s12" style="margin-top:20px">
+                        <div class="snake-wrapper">
+                            <div class="snake-panel">
+                                <div class="snake-score">得分：<span id="snake-score">0</span></div>
+                                <div class="input-field" style="margin:0;width:160px">
+                                    <select id="snake-speed">
+                                        <option value="160" selected>慢速</option>
+                                        <option value="120">中速</option>
+                                        <option value="80">快速</option>
+                                    </select>
+                                    <label>速度</label>
+                                </div>
+                                <a id="snake-start" class="waves-effect waves-light btn bg-color">开始</a>
+                                <a id="snake-pause" class="waves-effect waves-light btn grey">暂停</a>
+                                <a id="snake-restart" class="waves-effect waves-light btn red">重置</a>
+                                <span class="chip">Tips: 用 WASD 操控</span>
+                            </div>
+                            <canvas id="snake-canvas" width="520" height="520"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
-    
-    <link rel="stylesheet" type="text/css" href="/libs/jqcloud/jqcloud.css">
-<style type="text/css">
-    #tag-wordcloud {
-        width: 100%;
-        height: 300px;
-    }
-</style>
-
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="tag-wordcloud" class="card-content"></div>
-    </div>
-</div>
-
-<script type="text/javascript" src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
-<script type="text/javascript">
-    
-
-    $('#tag-wordcloud').jQCloud([{"text":"心得","weight":1,"link":"/tags/心得/"},{"text":"博客","weight":1,"link":"/tags/博客/"}], {
-        autoResize: true
-    });
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+    var elems=document.querySelectorAll('select');
+    M.FormSelect.init(elems);
+    var tabs=document.querySelectorAll('.tabs');
+    M.Tabs.init(tabs);
+});
 </script>
 
-    
+<script>
+(function(){
+    var gridEl=document.getElementById('ms-grid');
+    var sizeSel=document.getElementById('ms-size');
+    var densSel=document.getElementById('ms-density');
+    var timerEl=document.getElementById('ms-timer');
+    var flagsEl=document.getElementById('ms-flags');
+    var resetBtn=document.getElementById('ms-reset');
+    var width=9,height=9,bombs=10,firstClick=true,timer=0,timerId=null,flags=0;
+    var cells=[];
+    var lastClickIdx=-1,lastClickTime=0;
+    function densityToBombs(w,h,d){
+        var n=w*h; if(d==='easy') return Math.floor(n*0.12);
+        if(d==='normal') return Math.floor(n*0.16);
+        return Math.floor(n*0.21);
+    }
+    function buildGrid(){
+        gridEl.innerHTML='';
+        gridEl.style.gridTemplateColumns='repeat('+width+',28px)';
+        gridEl.style.gridTemplateRows='repeat('+height+',28px)';
+        cells=[]; flags=0; flagsEl.textContent=flags; firstClick=true; timer=0; timerEl.textContent='0s';
+        if(timerId){clearInterval(timerId); timerId=null}
+        var total=width*height;
+        for(var i=0;i<total;i++){
+            cells.push({bomb:false,rev:false,flag:false,count:0});
+            var d=document.createElement('div');
+            d.className='ms-cell';
+            d.dataset.idx=i;
+            d.addEventListener('click',onReveal);
+            d.addEventListener('dblclick',onDbl);
+            d.addEventListener('contextmenu',function(e){e.preventDefault();toggleFlag(parseInt(this.dataset.idx));});
+            gridEl.appendChild(d);
+        }
+    }
+    function placeBombs(exclude){
+        var b=bombs; var total=width*height; var used=new Set();
+        while(b>0){
+            var r=Math.floor(Math.random()*total);
+            if(r===exclude||used.has(r)) continue;
+            used.add(r); cells[r].bomb=true; b--;}
+        for(var y=0;y<height;y++){
+            for(var x=0;x<width;x++){
+                var idx=y*width+x; var c=cells[idx]; if(c.bomb){c.count=-1; continue}
+                var cnt=0;
+                for(var dy=-1;dy<=1;dy++){
+                    for(var dx=-1;dx<=1;dx++){
+                        if(dx===0&&dy===0) continue;
+                        var nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=width||ny>=height) continue;
+                        if(cells[ny*width+nx].bomb) cnt++;
+                    }
+                }
+                c.count=cnt;
+            }
+        }
+    }
+    function startTimer(){
+        if(timerId) return; timerId=setInterval(function(){timer++; timerEl.textContent=timer+'s';},1000)
+    }
+    function reveal(idx){
+        var c=cells[idx]; if(c.rev||c.flag) return; c.rev=true;
+        var el=gridEl.children[idx]; el.classList.add('revealed');
+        if(c.bomb){el.classList.add('bomb'); el.innerHTML='<i class="fas fa-bomb"></i>'; gameOver(false); return}
+        if(c.count>0){el.textContent=c.count; el.style.color=['#1976d2','#388e3c','#f57c00','#d32f2f','#7b1fa2','#0288d1','#c2185b','#512da8'][c.count-1]}
+        else{
+            var x=idx%width,y=Math.floor(idx/width);
+            for(var dy=-1;dy<=1;dy++){
+                for(var dx=-1;dx<=1;dx++){
+                    if(dx===0&&dy===0) continue;
+                    var nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=width||ny>=height) continue;
+                    reveal(ny*width+nx);
+                }
+            }
+        }
+    }
+    function toggleFlag(idx){
+        var c=cells[idx]; if(c.rev) return; c.flag=!c.flag; var el=gridEl.children[idx];
+        if(c.flag){el.classList.add('flag'); el.innerHTML='<i class="fas fa-flag"></i>'; flags++} else {el.classList.remove('flag'); el.innerHTML=''; flags--}
+        flagsEl.textContent=flags;
+    }
+    function onDbl(e){
+        var idx=parseInt(e.currentTarget.dataset.idx);
+        var c=cells[idx];
+        if(!c.rev||c.bomb||c.count<=0) return;
+        var x=idx%width,y=Math.floor(idx/width);
+        var f=0;
+        for(var dy=-1;dy<=1;dy++){
+            for(var dx=-1;dx<=1;dx++){
+                if(dx===0&&dy===0) continue;
+                var nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=width||ny>=height) continue;
+                var adj=cells[ny*width+nx];
+                if(adj.flag) f++;
+            }
+        }
+        if(f===c.count){
+            for(var dy2=-1;dy2<=1;dy2++){
+                for(var dx2=-1;dx2<=1;dx2++){
+                    if(dx2===0&&dy2===0) continue;
+                    var nx2=x+dx2, ny2=y+dy2; if(nx2<0||ny2<0||nx2>=width||ny2>=height) continue;
+                    var a=ny2*width+nx2; if(!cells[a].rev&&!cells[a].flag) reveal(a);
+                }
+            }
+            if(checkWin()) gameOver(true);
+        }
+    }
+    function checkWin(){
+        for(var i=0;i<cells.length;i++){var c=cells[i]; if(!c.bomb&&!c.rev) return false}
+        return true;
+    }
+    function gameOver(win){
+        for(var i=0;i<cells.length;i++){var c=cells[i]; var el=gridEl.children[i]; if(c.bomb&&!c.rev){el.classList.add('bomb'); el.innerHTML='<i class="fas fa-bomb"></i>'}}
+        if(timerId){clearInterval(timerId); timerId=null}
+        M.toast({html:win?'恭喜通关！':'炸到雷了！',classes:win?'green':'red'});
+        if(win) celebrate();
+    }
+    function celebrate(){
+        var overlay=document.createElement('div'); overlay.className='win-overlay';
+        for(var i=0;i<120;i++){
+            var s=document.createElement('span'); s.className='confetti';
+            var x=Math.random()*100; var y=0; var dx=(Math.random()*200-100)+'px'; var dy=(Math.random()*-400-200)+'px';
+            var rot=(Math.random()*720-360)+'deg';
+            s.style.left=x+'%'; s.style.top=y+'%';
+            s.style.setProperty('--dx',dx); s.style.setProperty('--dy',dy); s.style.setProperty('--rot',rot);
+            var colors=['#ff5252','#ffb300','#4caf50','#42a5f5','#ab47bc','#ef6c00']; s.style.background=colors[i%colors.length];
+            overlay.appendChild(s);
+        }
+        document.body.appendChild(overlay); setTimeout(function(){overlay.remove()},1200);
+    }
+    function onReveal(e){
+        var idx=parseInt(e.currentTarget.dataset.idx);
+        if(e.detail===2){ onDbl(e); return }
+        var now=Date.now();
+        if(lastClickIdx===idx && now-lastClickTime<300){ onDbl(e); lastClickIdx=-1; lastClickTime=0; return }
+        lastClickIdx=idx; lastClickTime=now;
+        if(firstClick){
+            var s=sizeSel.value.split('x'); width=parseInt(s[0]); height=parseInt(s[1]); bombs=densityToBombs(width,height,densSel.value);
+            placeBombs(idx); firstClick=false; startTimer();
+        }
+        reveal(idx);
+        if(checkWin()) gameOver(true);
+    }
+    function reset(){
+        var s=sizeSel.value.split('x'); width=parseInt(s[0]); height=parseInt(s[1]); bombs=densityToBombs(width,height,densSel.value);
+        buildGrid();
+    }
+    sizeSel.addEventListener('change',reset); densSel.addEventListener('change',reset); resetBtn.addEventListener('click',reset);
+    reset();
+})();
+</script>
 
-</main>
+<script>
+(function(){
+    var cvs=document.getElementById('snake-canvas');
+    var ctx=cvs.getContext('2d');
+    var scoreEl=document.getElementById('snake-score');
+    var speedSel=document.getElementById('snake-speed');
+    var startBtn=document.getElementById('snake-start');
+    var pauseBtn=document.getElementById('snake-pause');
+    var restartBtn=document.getElementById('snake-restart');
+    var grid=20; var cells=26; var timer=null; var dir='RIGHT'; var nextDir='RIGHT'; var snake=[]; var food=null; var score=0; var running=false; var particles=[];
+    function resize(){
+        var s=Math.min(520, cvs.parentElement.clientWidth); cvs.width=s; cvs.height=s;
+    }
+    function drawRect(x,y,color){ctx.fillStyle=color; ctx.fillRect(x*grid,y*grid,grid-1,grid-1)}
+    function spawnFood(){
+        food={x:Math.floor(Math.random()*cells), y:Math.floor(Math.random()*cells)};
+        for(var i=0;i<snake.length;i++){if(snake[i].x===food.x&&snake[i].y===food.y){return spawnFood()}}
+    }
+    function init(){
+        cells=Math.floor(cvs.width/grid); snake=[{x:12,y:12},{x:11,y:12},{x:10,y:12}]; dir='RIGHT'; nextDir='RIGHT'; score=0; scoreEl.textContent='0'; spawnFood();
+    }
+    function step(){
+        dir=nextDir;
+        var head={x:snake[0].x,y:snake[0].y};
+        if(dir==='RIGHT') head.x++; else if(dir==='LEFT') head.x--; else if(dir==='UP') head.y--; else if(dir==='DOWN') head.y++;
+        if(head.x<0||head.y<0||head.x>=cells||head.y>=cells){return over()}
+        for(var i=0;i<snake.length;i++){if(snake[i].x===head.x&&snake[i].y===head.y){return over()}}
+        snake.unshift(head);
+        if(head.x===food.x&&head.y===food.y){score+=10; scoreEl.textContent=score; spawnBurst(food.x,food.y); if(score>=100&&score%100===0) celebrate(); spawnFood()} else {snake.pop()}
+        ctx.clearRect(0,0,cvs.width,cvs.height);
+        drawRect(food.x,food.y,'#f44336');
+        for(var i=0;i<snake.length;i++){drawRect(snake[i].x,snake[i].y,i===0?'#4caf50':'#66bb6a')}
+        renderParticles();
+    }
+    function over(){
+        stop(); M.toast({html:'游戏结束',classes:'red'});
+    }
+    function start(){
+        if(running) return; running=true; var sp=parseInt(speedSel.value);
+        timer=setInterval(step,sp);
+    }
+    function stop(){
+        running=false; if(timer){clearInterval(timer); timer=null}
+    }
+    function restart(){
+        stop(); init(); start();
+    }
+    document.addEventListener('keydown',function(e){
+        var k=e.key.toLowerCase();
+        if(['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d',' '].includes(k)) e.preventDefault();
+        if(k==='d'&&dir!=='LEFT') nextDir='RIGHT'; else if(k==='a'&&dir!=='RIGHT') nextDir='LEFT'; else if(k==='w'&&dir!=='DOWN') nextDir='UP'; else if(k==='s'&&dir!=='UP') nextDir='DOWN';
+    });
+    startBtn.addEventListener('click',start); pauseBtn.addEventListener('click',stop); restartBtn.addEventListener('click',restart); speedSel.addEventListener('change',function(){if(running){stop(); start()}});
+    window.addEventListener('resize',function(){resize(); init();});
+    resize(); init();
+    function spawnBurst(x,y){
+        for(var i=0;i<24;i++){
+            particles.push({x:x*grid+grid/2,y:y*grid+grid/2,vx:(Math.random()*3-1.5),vy:(Math.random()*3-1.5),life:20,color:['#ff5252','#ffb300','#4caf50','#42a5f5','#ab47bc'][i%5]});
+        }
+    }
+    function renderParticles(){
+        for(var i=particles.length-1;i>=0;i--){var p=particles[i]; ctx.fillStyle=p.color; ctx.globalAlpha=Math.max(p.life/20,0); ctx.fillRect(p.x,p.y,3,3); ctx.globalAlpha=1; p.x+=p.vx*grid/4; p.y+=p.vy*grid/4; p.life--; if(p.life<=0) particles.splice(i,1)}
+    }
+})();
+</script>
 
 
     <footer class="page-footer bg-color">
