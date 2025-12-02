@@ -33,6 +33,7 @@
 <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
 <link rel="stylesheet" type="text/css" href="/css/matery.css">
 <link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/auth.css">
 <link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
 
 
@@ -51,6 +52,11 @@
 
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+        <script>
+            // AUTH backend base URL for front-end scripts. Configure via theme._config.yml -> auth.base
+            window.AUTH_BASE = 'http://localhost:3001';
+        </script>
 
 <meta name="generator" content="Hexo 8.1.1"></head>
 
@@ -153,6 +159,9 @@
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
     </a>
+  </li>
+  <li id="auth-area" class="hide-on-med-and-down nav-item">
+    <!-- auth area populated by /source/js/auth.js -->
   </li>
   <li>
     <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
@@ -263,6 +272,10 @@
             </a>
         </li>
         
+        <li><div class="divider"></div></li>
+        <li id="mobile-auth-area">
+          <!-- mobile auth area populated by auth.js -->
+        </li>
     </ul>
 </div>
 
@@ -329,6 +342,29 @@
     </nav>
 
 </header>
+
+    <div id="authModalBackdrop" class="auth-modal-backdrop">
+  <div class="auth-modal" role="dialog" aria-modal="true">
+    <h3 id="authTitle">登录</h3>
+    <div id="authForm">
+      <div class="field">
+        <label for="auth-username">用户名</label>
+        <input id="auth-username" type="text" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="auth-password">密码</label>
+        <input id="auth-password" type="password" autocomplete="current-password">
+      </div>
+      <div class="actions">
+        <button id="authSubmit" class="auth-btn">提交</button>
+        <button id="authCancel" class="auth-cancel">取消</button>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:13px;color:#666">
+      <a href="#" id="toggleAuthMode">切换到注册</a>
+    </div>
+  </div>
+</div>
 
     <div class="bg-cover pd-header about-cover">
     <div class="container">
@@ -683,6 +719,7 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
+    <script src="/js/auth.js"></script>
 
     
 

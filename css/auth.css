@@ -1,0 +1,11 @@
+/* Simple modal styles for login/register */
+.auth-modal-backdrop{display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10000;align-items:center;justify-content:center}
+.auth-modal{background:#fff;border-radius:8px;max-width:420px;width:92%;padding:20px;box-shadow:0 6px 24px rgba(0,0,0,0.2)}
+.auth-modal h3{margin-top:0;margin-bottom:12px}
+.auth-modal .field{margin-bottom:10px}
+.auth-modal label{display:block;font-size:13px;margin-bottom:6px}
+.auth-modal input[type=text],.auth-modal input[type=password]{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:4px}
+.auth-modal .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.auth-btn{background:#42b983;color:#fff;padding:8px 12px;border-radius:4px;text-decoration:none;cursor:pointer}
+.auth-cancel{background:#eee;color:#333;padding:8px 12px;border-radius:4px;cursor:pointer}
+@media (max-width:600px){.auth-modal{max-width:320px;padding:16px}}
